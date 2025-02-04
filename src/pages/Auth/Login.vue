@@ -152,7 +152,7 @@ function handleRegister() {
 <template>
   <div class="row">
     <div class="col-md-6">
-      <q-img src="../../assets/imagen.png" style="height: 100vh" />
+      <q-img src="../../assets/image_auth.png" style="height: 100vh" />
     </div>
     <div class="col-12 col-md-6">
       <q-card flat>
