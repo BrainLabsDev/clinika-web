@@ -4,7 +4,7 @@
       <q-card>
         <q-card-section>
           <div class="row justify-center q-mx-md q-mt-lg q-mb-md">
-            <q-img src="../../assets/Logo.png" width="200px" />
+            <q-img src="../../assets/logo.png" width="200px" />
           </div>
           <div
             class="text-h6 text-md-h5 text-center text-uppercase text-weight-bold"

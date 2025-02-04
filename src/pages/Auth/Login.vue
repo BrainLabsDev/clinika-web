@@ -160,7 +160,7 @@ function handleRegister() {
           <!-- LOGO -->
           <div class="col-12">
             <div class="text-center q-my-xl">
-              <q-img src="../../assets/Logo.png" width="200px" />
+              <q-img src="../../assets/logo.png" width="200px" />
             </div>
           </div>
 
