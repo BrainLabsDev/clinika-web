@@ -1,4 +1,4 @@
-import { API } from 'src/common/api';
+import api from './axios';
 import {
   ICitaAgendaDTO,
   ICitaAgendaResponse,
@@ -12,7 +12,7 @@ const { deleteLocalStorage } = store;
 
 class CitaAgendaDataService {
   async save(data: ICitaAgendaDTO): Promise<IResponse<ICitaAgendaResponse>> {
-    let response = await API.post('create/cita', { data });
+    let response = await api.post('create/cita', { data });
     return response.data;
   }
 
@@ -20,7 +20,7 @@ class CitaAgendaDataService {
     id: number,
     data: ICitaAgendaDTO
   ): Promise<IResponse<ICitaAgendaResponse>> {
-    let response = await API.post('update/cita/{{id}}', {
+    let response = await api.post('update/cita/{{id}}', {
       params: { id },
       data,
     });
@@ -28,14 +28,14 @@ class CitaAgendaDataService {
   }
 
   async getAll(): Promise<IResponse<ICitaAgendaResponse[]>> {
-    const response = await API.get('show/all-citas', {});
+    const response = await api.get('show/all-citas', {});
     return response!.data;
   }
 
   async getAllByDate(date: string): Promise<IResponse<ICitaAgendaResponse[]>> {
     let response;
     try {
-      response = await API.get('show/all-citas/{{date}}', {
+      response = await api.get('show/all-citas/{{date}}', {
         params: { date },
       });
     } catch (error) {

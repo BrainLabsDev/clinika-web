@@ -1,4 +1,4 @@
-import { API } from 'src/common/api';
+import api from './axios';
 import { IActividadFisica } from 'src/Interfaces/ActividadFisica';
 
 import { IResponse } from 'src/Interfaces/Response';
@@ -8,7 +8,7 @@ const store = useAuthStore();
 const { deleteLocalStorage } = store;
 class ActividadDataService {
   async getActividades(): Promise<IResponse<IActividadFisica[]>> {
-    const response = await API.get('show/actividades-fisicas', {});
+    const response = await api.get('show/actividades-fisicas', {});
     return response!.data;
   }
 }

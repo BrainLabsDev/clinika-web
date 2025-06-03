@@ -1,10 +1,8 @@
-import axios from 'src/boot/axios';
-import { API } from 'src/common/api';
+import api from './axios';
 import {
   IPaciente,
   IPacientePayload,
   IPacienteRES,
-  IPacienteWithFilesPayload,
 } from 'src/Interfaces/Paciente';
 import { IResponse } from 'src/Interfaces/Response';
 import { useAuthStore } from 'src/stores/auth';
@@ -14,7 +12,7 @@ const store = useAuthStore();
 const { deleteLocalStorage } = store;
 class PacienteDataService {
   async getAll(): Promise<IResponse<IPaciente[]>> {
-    const response = await API.get('show/clientes', {});
+    const response = await api.get('show/clientes', {});
 
     return response!.data;
   }
@@ -22,7 +20,7 @@ class PacienteDataService {
   async getById(id: string): Promise<IResponse<{ user: IPacienteRES }>> {
     let response;
     try {
-      response = await API.get(`show/user/${id}`, {});
+      response = await api.get(`show/user/${id}`, {});
     } catch (error) {
       deleteLocalStorage();
     }
@@ -30,7 +28,7 @@ class PacienteDataService {
   }
 
   async savePaciente(data: any): Promise<IResponse<IPaciente>> {
-    let response = await API.post('create/user', {
+    let response = await api.post('create/user', {
       data: data,
     });
 
@@ -41,7 +39,7 @@ class PacienteDataService {
     id: number | string,
     data: IPacientePayload
   ): Promise<IResponse<IPaciente>> {
-    let response = await API.post(`update/user/${id}`, {
+    let response = await api.post(`update/user/${id}`, {
       data: data,
     });
 
@@ -49,7 +47,7 @@ class PacienteDataService {
   }
 
   async deleteUser(id: string): Promise<IResponse<any>> {
-    const response = await API.delete(`delete/user/${id}`, {});
+    const response = await api.delete(`delete/user/${id}`, {});
 
     return response!.data;
   }

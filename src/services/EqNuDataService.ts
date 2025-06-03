@@ -1,11 +1,11 @@
-import { API } from 'src/common/api';
+import api from './axios';
 import { IResponse } from 'src/Interfaces/Response';
 import { useAuthStore } from 'src/stores/auth';
 const store = useAuthStore();
 
 class EqNuDataService {
   async getByCita(id: string): Promise<IResponse<any[]>> {
-    const response = await API.get(
+    const response = await api.get(
       `show/equivalencias-nutricionales/${id}`,
       {}
     );
@@ -13,12 +13,12 @@ class EqNuDataService {
   }
 
   async save(data: any): Promise<IResponse<any>> {
-    let response = await API.post('create/equivalencia-nutricional', { data });
+    let response = await api.post('create/equivalencia-nutricional', { data });
     return response.data;
   }
 
   async update(id: any, data: any): Promise<IResponse<any>> {
-    let response = await API.post(`update/equivalencia-nutricional/${id}`, {
+    let response = await api.post(`update/equivalencia-nutricional/${id}`, {
       data,
     });
     return response.data;

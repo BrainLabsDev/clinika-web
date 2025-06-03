@@ -1,8 +1,7 @@
-import { API } from 'src/common/api';
+import api from './axios';
 import { IResponse } from 'src/Interfaces/Response';
 import { useAuthStore } from 'src/stores/auth';
 const store = useAuthStore();
-const { deleteLocalStorage } = store;
 
 interface IShowCategories {
   alcohol_consumption: ICatalogoData[] | [];
@@ -34,7 +33,7 @@ class CatalogoDataService {
       estado_civil: [],
     };
 
-    const { data } = await API.get('show-categories', {});
+    const { data } = await api.get('show-categories', {});
 
     response = {
       objectives: data.data.objectives,
